@@ -1,0 +1,29 @@
+import java.util.StringTokenizer; 
+import java.util.Scanner;
+ class customer
+ {
+ String name; 
+String dob; 
+void readdata() 
+{ 
+System.out.println("enter the customer details: name and date_of_birth delimited by/");     
+Scanner in = new Scanner(System.in);     
+name=in.next();    
+ dob=in.next(); 
+}
+ void display()
+ {  
+   StringTokenizer st = new StringTokenizer(dob,"/"); 
+    System.out.println(" the customer data is:");   
+  System.out.print("<"+name);
+     while (st.hasMoreTokens())   
+  System.out.print(","+st.nextToken());   
+  System.out.println(">");
+ }
+ public static void main(String args[])
+ {
+ customer c= new customer();
+ c.readdata();
+ c.display(); 
+}
+ } 
