@@ -1,0 +1,108 @@
+import java.util.Scanner; 
+abstract class staff { 
+String name; 
+int staffid; 
+String phno;
+ double salary; 
+staff(String n,int id,String p,double sal) 
+{
+ name=n;
+ staffid=id;
+ phno=p; 
+salary=sal;
+ }
+abstract void display(); }; 
+ 
+class teaching extends staff { 
+String domain;
+int no_of_publication;
+ teaching(String n,int id,String pno,double sal,String dom,int nop) 
+{ 
+super(n,id,pno,sal);
+domain=dom;
+no_of_publication=nop;
+}
+void display() 
+{ 
+System.out.println("Teaching staff details:"); 
+System.out.println("name \t staffid phno \tsalary \tdomain \t no_of_publication");
+System.out.println(name+" \t "+staffid+" \t "+ phno+"\t"+salary+"\t"+domain+" \t"+no_of_publication); 
+}
+}; 
+class technical extends staff { String skills; technical(String name ,int id,String p,double sal,String skl ) 
+{
+ super(name,id,p,sal); skills=skl; 
+}
+ void display()
+ {
+ System.out.println("Technical staff details:"); 
+System.out.println("name \t staffid\tphno\tsalary\tskills"); 
+System.out.println(name+" \t"+staffid+" \t"+phno+" \t"+salary+"\t"+skills); 
+}
+};
+class contract extends staff { 
+int period;
+ contract(String n,int id,String p,double sal,int prd) 
+{
+ super(n,id,p,sal); period=prd;
+ }
+ void display()
+ {
+ System.out.println("contract staff details:");
+ System.out.println("name \t staffed \t phno \t salary \t period");
+ System.out.println(name+" \t"+staffid+" \t"+phno+" \t"+salary+"\t"+period);
+ }
+ };
+ class staffdetail { 
+public static void main(String args[])
+ {
+ staff s; 
+while(true)
+ { 
+Scanner in = new Scanner(System.in); 
+System.out.println("1.teaching staff\n 2.technical\n3.contract\n4.exit");
+ System.out.println("enter your choice:");
+int c=in.nextInt(); 
+switch(c)
+ {
+     case 1: System.out.println("enter teaching staff details:");
+     System.out.println("enter name \t staffid\tphno\tsalary\tdomain\tno_of_publication");    
+ String n=in.next(); 
+    int sfid=in.nextInt();   
+  String pn=in.next();   
+  double sal=in.nextDouble();
+     String dom=in.next();    
+ int n_o_pub=in.nextInt();   
+  teaching tc=new teaching(n,sfid,pn,sal,dom,n_o_pub);    
+ s=tc;
+     s.display();
+     break; 
+case 2: 
+    System.out.println("enter technical staff details:");
+     System.out.println("enter name \t staffid\tphno\tsalary\tskills");
+     n=in.next(); 
+    int sid=in.nextInt();   
+  pn=in.next(); 
+    sal=in.nextDouble(); 
+    String skills=in.next();   
+  technical t=new technical(n,sid,pn,sal,skills); 
+    s=t;    
+ s.display();   
+  break;
+ case 3: 
+    System.out.println("enter contract staff details:"); 
+    System.out.println("enter name \t staffid\tphno\tsalary\tperiod");  
+   n=in.next();  
+   sid=in.nextInt();  
+   String pno=in.next();  
+   sal=in.nextDouble();   
+  int period=in.nextInt();    
+ contract cr=new contract(n,sid,pno,sal,period); 
+    s=cr; 
+    s.display();   
+  break;   
+  default: System.exit(0);
+ }
+ }
+ }
+ } 
