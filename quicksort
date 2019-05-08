@@ -1,0 +1,70 @@
+import java.util.Scanner;
+public class quicksort {
+	public long a[];	
+	public void quicksort1( long [] inputArr, int low, int high) {
+		int j; 
+		if(low < high) 
+		{ 
+		j=partition1(inputArr,low,high); 
+		quicksort1(inputArr,low,j-1); 
+		quicksort1(inputArr,j+1,high); 
+		} 
+		
+	}
+
+	public int partition1(long  []a,int low, int high) {
+		int i,j;
+		long temp,key;
+				
+		key=a[low]; 
+		i=low+1; 
+		j=high; 
+		while(i<j) 
+		{ 
+			while (i<high && a[i]<=key) 
+			i++; 
+			while (a[j]>key) 
+			j--; 
+			
+			if(i<j)
+			{
+			temp=a[i]; 
+			a[i]=a[j]; 
+			a[j]=temp;
+			}
+		}
+			
+			temp=a[low]; 
+			a[low]=a[j]; 
+			a[j]=temp;
+			
+			return j; 
+			
+		}
+			
+	
+
+	
+	public static void main(String args[])
+	{
+		
+		quicksort sorter = new quicksort();
+		Scanner in=new Scanner(System.in);
+		System.out.println("Enter the value of n");
+		int n=in.nextInt();
+		long [] input = new long [n];
+		for(int i=0;i<n;i++)
+		{
+			input[i]= (long) Math.round(Math.random() * 5000);
+		}
+		long startime=System.currentTimeMillis();
+		sorter.quicksort1(input,0,n-1);
+		long endtime= System.currentTimeMillis();
+		long totaltime= endtime-startime;		
+		for(int j=0;j<n;j++)
+		System.out.println(input[j]);
+		System.out.println("Total time required for execution=" + totaltime +"ms");;	
+		System.out.println("the best case  and average case time complexity = "+ n*Math.log(n));
+		System.out.println("the worst case time complexity = " +n*n);
+	}	
+}
