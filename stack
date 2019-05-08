@@ -1,0 +1,65 @@
+import java.io.*;
+import java.util.Scanner;
+public class stack {
+	int size=5;
+	int top;
+	int s[]= new int[size];
+	stack()
+	{
+		top=-1;
+	}
+	
+	void push(int item)
+	{
+		if (top==size-1)
+			System.out.println("Stack is full ");
+		else
+			s[++top]=item;
+	}
+	
+	int pop()
+	{
+		if (top==-1)
+		{
+			System.out.println("Stack is Empty ");
+			return 0;
+		}
+		else
+			return s[top--];
+	}
+	
+	void display()
+	{
+		if (top==-1)
+					System.out.println("Stack is Empty ");
+		else
+		{
+			for(int i=top;i>=0;i--)
+				System.out.println(s[i]);
+		}
+	}
+	public static void main(String[] args)
+	{
+		stack s1 = new stack();
+		while(true)
+		{
+			System.out.println("1.push  2.pop, 3. display, 4. Exit");
+			System.out.println("Enter the Choice");
+			Scanner in= new Scanner(System.in);
+			int ch=in.nextInt();
+			switch(ch)
+			{
+			case 1: System.out.println("Enter the item");
+					int item=in.nextInt();
+					s1.push(item);break;
+			case 2: int 1
+                        itemdel=s1.pop();
+			if(itemdel!=0)
+			System.out.println("The item deleted is "+itemdel);
+			break;
+			case 3:s1.display(); break;
+			default:System.exit(0);
+			}
+		}
+	}
+		}
