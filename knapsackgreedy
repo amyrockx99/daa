@@ -1,0 +1,78 @@
+import java.util.Scanner;
+public class knapsackgreedy
+{
+int[] profit;
+int[] weight;
+int[] take = new int[100];
+public void unitPriceOrder() 
+{
+	for (int i = 0; i<profit.length; i++)
+		{
+			for (int j = 0; j < (profit.length - i-1); j++) 
+{
+			double x=profit[j] / weight[j];
+			double y=profit[j+1] / weight[j+1];
+			if (x <=y) 
+{
+			int temp = profit[j];
+			profit[j] = profit[j+1];
+			profit[j+1] = temp;
+			int temp1 = weight[j];
+			weight[j] = weight[j+1];
+			weight[j+1] = temp1;
+			}
+		}
+	}
+    }
+
+public void Knapsack(int m) 
+{
+unitPriceOrder();
+int j;
+for (j = 0; j <profit.length; j++) 
+{
+	take[j] = 0;
+	  }
+double total = m;
+for (j = 0; j <profit.length; j++) 
+{
+	if (weight[j] <= total) 
+{
+	take[j] = 1;
+	total = total - weight[j];
+ }
+        }           
+    }
+
+public void print() 
+{
+System.out.println("item" + " |  " + "profit" + "  |   " + "weight" +
+                "   |     " + "Unit Price" + "      |" + "  Take weight");
+for (int n = 0; n <profit.length; n++) {
+System.out.println(n + "   \t" + profit[n] + "    \t" + weight[n] + "     \t"
+                    + (profit[n] / weight[n]) + "\t" + take[n]);
+        }
+    }
+
+public static void main(String args[]) 
+{
+knapsackgreedy G = new knapsackgreedy();
+System.out.println("Enter the number of items: ");
+	 Scanner sc= new Scanner(System.in);
+int n = sc.nextInt();
+	System.out.println("Enter the items weights: ");
+G.weight = new int[n];
+for(int i=0; i<n; i++)
+	G.weight[i] = sc.nextInt();
+System.out.println("Enter the items values: ");
+G.profit = new int[n];
+for(int i=0; i<n; i++)
+	G.profit[i] = sc.nextInt();
+System.out.println("Enter the maximum capacity: ");
+int W = sc.nextInt();
+System.out.println("Optimal soluation to knapsack instance "
+                + "with values given as follows : m=" + W);
+G.Knapsack(W);
+G.print();
+            }
+}
