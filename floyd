@@ -1,0 +1,37 @@
+import java.util.Scanner;
+ public class floyd 
+{ 
+    int min(int a,int b)
+    {
+     return a<b?a:b;
+    }      
+void flo(int c[][],int n)    
+{
+     int i,j,k; 
+      for (k=1;k<=n;k++)  
+   for (i=1;i<=n;i++)   
+     for (j=1;j<=n;j++)       
+   c[i][j]=min(c[i][j], c[i][k]+c[k][j]);
+    }  
+      public static void main(String args[])
+    { 
+ int c[][]= new int[10][10]; 
+ int n,i,j;   
+System.out.println("\n Enter the number of vertices: ");   
+Scanner in= new Scanner(System.in);  
+ n= in.nextInt(); 
+System.out.println("\n Enter the cost matrix 0 -self loop & 999 –for  no edge\n");  
+ for (i=1;i<=n;i++)  
+   for (j=1;j<=n;j++) 
+   c[i][j]= in.nextInt();    
+floyd f=new floyd(); 
+    f.flo(c,n);  
+ System.out.println("\n Shortest path matrix\n");  
+    for (i=1;i<=n;i++)  
+   {      
+for (j=1;j<=n;j++)
+      System.out.print("\t" +c[i][j]); 
+     System.out.println("");
+    }
+   }
+ } 
