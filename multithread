@@ -1,0 +1,59 @@
+import java.util.Random;
+class square extends Thread
+{
+public int x;
+public square(int x) 
+{
+	this.x = x;
+}
+public void run() 
+{
+	System.out.println("New Thread -" +" Number generated is " + x + " square of num is: " 	+ x * x);
+}
+}
+class cube extends Thread
+{
+	public int x;
+	public cube(int x) 
+	{
+		this.x = x;
+	}
+	public void run() 
+	{
+		System.out.println("New Thread - " +" Number Generated is " + x + " cube of 			num is: " + x * x * x);
+	}
+	}
+class A extends Thread 
+{
+	public void run() 
+	{ 
+		int num = 0;
+		Random r = new Random();
+		try
+		{
+			for (int i = 0; i< 5; i++) 
+			{
+			num = r.nextInt(100);
+			System.out.println("Main Thread - Generated Number is " + num);
+			Thread t1 = new square(num);
+			t1.start();
+			Thread t2 = new cube(num);
+			t2.start();
+			Thread.sleep(1000);
+			System.out.println("--------------------------------------");
+			}
+		} 
+	catch (Exception ex) 
+		{ 
+			System.out.println(ex.getMessage());
+		}
+	}
+}
+public class multithread 
+{
+	public static void main(String[] args) 
+	{ 
+		A a = new A();
+		a.start();
+	}
+}
