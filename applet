@@ -1,0 +1,34 @@
+import java.applet.*;
+ import java.awt.*;
+ import java.awt.event.*;
+ /*<applet code=applet width=800 height=1000> </applet>*/ 
+public class applet extends Applet  implements ActionListener
+ {
+ TextField name,age,msg;
+ Button swapEm;
+ public void init() 
+{
+     name = new TextField(35); 
+    age = new TextField(15);   
+  msg=new TextField(45);
+ swapEm = new Button("click to see message");
+ swapEm.addActionListener(this); 
+ 
+ add(new Label("Enter name"));   
+add(name);
+  add(new Label("Enter age")); 
+ add(age); 
+add(swapEm);
+ add(msg); 
+}
+ public void paint(Graphics g)
+{ 
+setBackground(Color.red); 
+        } 
+  public void actionPerformed(ActionEvent e)
+    {
+       String str1 = name.getText();
+      String a = age.getText(); 
+      msg.setText(str1+" is "+a+" yearold");
+ }
+ } 
