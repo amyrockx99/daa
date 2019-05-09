@@ -1,0 +1,35 @@
+import java.applet.*; 
+import java.awt.*;
+ import java.awt.event.*;
+ /*<applet code=factapplet width=800 height=1000> </applet>*/
+ public class factapplet extends Applet  implements ActionListener
+ {
+ TextField no,res;
+ Button b; 
+public void init()
+ {
+     no = new TextField(35);  
+   res = new TextField(15); 
+    b= new Button("enter"); 
+b.addActionListener(this); 
+ 
+ add(new Label("Enter no")); 
+  add(no); 
+add(b);
+  add(new Label("factorial of no is"));
+  add(res);
+ }
+ public void paint(Graphics g)
+{
+ setBackground(Color.blue);  
+       } 
+  public void actionPerformed(ActionEvent e) 
+   {   
+              String str1 = no.getText(); 
+int n=Integer.parseInt(str1); 
+int fact=1; 
+for (int i=1;i<=n;i++)
+ fact=fact*i; 
+      res.setText(Integer.toString(fact));
+ }
+ } 
